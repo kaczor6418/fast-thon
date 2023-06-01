@@ -20,6 +20,7 @@
     "url": "git+https://github.com/kaczor6418/fast-thon.git"
   },
   "scripts": {
+    "postinstall": "git config core.hooksPath ./git-hooks",
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
