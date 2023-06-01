@@ -4,7 +4,10 @@
   "description": "App boilerplate for hackathons. React + MUI + Firebase",
   "sideEffects": false,
   "source": "src/main.tsx",
-  "keywords": ["hacathon", "boilerplate"],
+  "keywords": [
+    "hacathon",
+    "boilerplate"
+  ],
   "author": "Krzysztof Kaczyński",
   "license": "MIT",
   "type": "module",
@@ -64,6 +67,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-tsconfig-paths": "^4.2.0"
   }
 }
