@@ -207,5 +207,12 @@
     "@typescript-eslint/no-magic-numbers": "off"
   },
   // Overides for specific files
-  "overrides": []
+  "overrides": [
+    {
+      "files": ["**/custom-types/**/*"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 }
