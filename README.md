@@ -1,3 +1,3 @@
 # fast-thon
 
->App boilerplate for hackathons. React + MUI + Firebase
+> App boilerplate for hackathons. React + MUI + Firebase

@@ -168,16 +168,7 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "index",
-          "sibling",
-          "parent",
-          "internal",
-          "object",
-          "type"
-        ]
+        "groups": ["builtin", "external", "index", "sibling", "parent", "internal", "object", "type"]
       }
     ],
     "@typescript-eslint/no-namespace": "error",
