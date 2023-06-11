@@ -33,8 +33,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "assets/*": ["assets/*"],
-      "locales/*": ["locales/*"]
+      "assets/*": ["assets/*"]
     }
   }
 }
