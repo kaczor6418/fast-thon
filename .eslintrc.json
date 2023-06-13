@@ -154,7 +154,6 @@
     "radix": ["error", "always"],
     "require-await": "error",
     "require-yield": "error",
-    "sort-keys": "error",
     "yoda": ["error", "never"],
     "prettier/prettier": "error",
     "import/no-default-export": "error",
@@ -195,6 +194,7 @@
     "accessor-pairs": "off",
     "no-magic-numbers": "off",
     "sort-imports": "off",
+    "sort-keys": "off",
     "@typescript-eslint/no-magic-numbers": "off"
   },
   // Overides for specific files
@@ -202,7 +202,8 @@
     {
       "files": ["**/custom-types/**/*"],
       "rules": {
-        "import/no-default-export": "off"
+        "import/no-default-export": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ]

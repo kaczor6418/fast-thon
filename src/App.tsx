@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import reactLogo from 'assets/react.svg';
 import viteLogo from 'assets/vite.svg';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './App.css';
 
 export function App() {
