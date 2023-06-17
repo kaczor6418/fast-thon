@@ -33,7 +33,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "assets/*": ["assets/*"]
+      "fonts/*": ["public/fonts/*"],
+      "icons/*": ["public/icons/*"]
     }
   }
 }

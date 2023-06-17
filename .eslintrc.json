@@ -161,7 +161,7 @@
     "import/no-unresolved": [
       "error",
       {
-        "ignore": [".css$", ".svg$", ".json$"]
+        "ignore": [".css$", ".svg$", ".json$", ".woff2$"]
       }
     ],
     "import/order": [

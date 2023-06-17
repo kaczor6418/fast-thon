@@ -4,6 +4,7 @@ import { breakpoints } from './breakpoints';
 import { CustomThemeProviderProps, ThemeMode } from './mui.types';
 import { getColorPalette } from './palette';
 import { spacing } from './spacing';
+import { localFont, typography } from './typography';
 import { ReactContextError } from '../errors/ReactContextError';
 import { isNullOrUndefined } from '../common/utils/isNullOrUndefined';
 
@@ -18,6 +19,12 @@ export function CustomThemeProvider({ children }: CustomThemeProviderProps) {
         breakpoints: breakpoints,
         palette: getColorPalette(themeMode),
         spacing: spacing,
+        typography: typography,
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: localFont,
+          },
+        },
       }),
     [themeMode]
   );
