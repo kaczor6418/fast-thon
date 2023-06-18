@@ -1,25 +1,30 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { AppEN } from './locales/en/app.translation';
-import { AppPL } from './locales/pl/app.translation';
+import { AppEN } from './locales/en/components/app.translations';
+import { AppPL } from './locales/pl/components/app.translations';
 
-const translations = {
+export const defaultNS = 'components';
+export const fallbackLang = 'en';
+export const translations = {
   en: {
-    app: AppEN,
+    components: {
+      app: AppEN,
+    },
   },
   pl: {
-    app: AppPL,
+    components: {
+      app: AppPL,
+    },
   },
-};
+} as const;
 
 export const initializeI18n = () => {
   void i18n.use(initReactI18next).init({
-    fallbackLng: ['en'],
+    defaultNS: defaultNS,
+    fallbackLng: [fallbackLang],
     interpolation: {
       escapeValue: false,
     },
-    lng: 'en',
-    ns: ['app'],
     react: {
       bindI18n: 'languageChanged',
     },
