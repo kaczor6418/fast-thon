@@ -22,7 +22,7 @@ export function CustomThemeProvider({ children }: CustomThemeProviderProps) {
         typography: typography,
         components: {
           MuiCssBaseline: {
-            styleOverrides: localFont,
+            styleOverrides: `:root { width: 100%; } ${localFont}}`,
           },
         },
       }),
