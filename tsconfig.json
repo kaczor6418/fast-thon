@@ -34,7 +34,8 @@
     "baseUrl": ".",
     "paths": {
       "fonts/*": ["public/fonts/*"],
-      "icons/*": ["public/icons/*"]
+      "icons/*": ["public/icons/*"],
+      "firebase-cfg/*": ["firebase/*"]
     }
   }
 }

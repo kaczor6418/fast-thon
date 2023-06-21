@@ -24,11 +24,17 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:ts": "eslint . --cache --ext .ts --ext .tsx",
-    "lint:ts:fix": "eslint . --cache --ext .ts --ext .tsx --fix",
-    "lint:ts:watch": "esw . --watch --cache --ext .ts --ext .tsx ",
+    "lint": "eslint . --cache --ext .ts --ext .tsx",
+    "lint:fix": "eslint . --cache --ext .ts --ext .tsx --fix",
+    "lint:watch": "esw . --watch --cache --ext .ts --ext .tsx ",
     "prettyprint": "prettier --check .",
-    "prettyprint:fix": "prettier --write ."
+    "prettyprint:fix": "prettier --write .",
+    "firebase:init": "cd firebase && firebase init",
+    "firebase:start:emulators": "cd firebase && firebase emulators:start --import=./seed --export-on-exit",
+    "firebase:deploy:storage-rules": "cd firebase && firebase deploy --only storage",
+    "firebase:deploy:firestore-rules": "cd firebase && firebase deploy --only firestore:rules",
+    "firebase:deploy:firesotre-indexes": "cd firebase && firebase deploy --only firestore:indexes",
+    "git:stop-tracking-db-seed": "git update-index --assume-unchanged firebase/seed/auth_export/accounts.json firebase/seed/auth_export/config.json firebase/seed/firebase-export-metadata.json firebase/seed/firestore_export/all_namespaces/all_kinds/all_namespaces_all_kinds.export_metadata firebase/seed/firestore_export/all_namespaces/all_kinds/output-0 firebase/seed/firestore_export/firestore_export.overall_export_metadata firebase/seed/storage_export/buckets.json"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
