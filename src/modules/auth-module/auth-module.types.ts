@@ -7,10 +7,4 @@ export interface UserProfile {
   email: string;
 }
 
-export const enum AuthProvider {
-  GOOGLE,
-  FACEBOOK,
-  TWITTER,
-}
-
 export type OAuthProvider = GoogleAuthProvider | TwitterAuthProvider | FacebookAuthProvider;

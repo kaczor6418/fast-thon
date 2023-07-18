@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
-import { connectToFirebaseEmulators } from './services/FirebaseService/connectToFirebaseEmulators';
+import { connectToFirebaseEmulators } from './modules/firebase-module/connectToFirebaseEmulators';
 import { initializeI18n } from './i18n/i18n';
 import { CustomThemeProvider } from './mui/CustomThemeProvider';
 

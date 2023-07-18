@@ -9,9 +9,9 @@ import {
 } from 'firebase/auth';
 import { UserCredential } from '@firebase/auth';
 import firebase from 'firebase/compat';
-import { OAuthProvider, UserProfile } from './AuthService.types';
+import { OAuthProvider, UserProfile } from './auth-module.types';
 import { AuthError } from '../../errors/AuthError';
-import { firebaseAuth } from '../FirebaseService/firebase.config';
+import { firebaseAuth } from '../firebase-module/firebase.config';
 import FirebaseError = firebase.FirebaseError;
 
 async function sigInWithOAuthPopup(authProvider: OAuthProvider): Promise<UserCredential> {
