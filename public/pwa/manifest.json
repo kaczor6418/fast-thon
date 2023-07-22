@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "start_url": ".",
+  "lang": "en",
+  "dir": "auto",
+  "name": "FastThon",
+  "short_name": "FastThon",
+  "description": "Boilerplate for hacathon",
+  "display": "standalone",
+  "orientation": "natural",
+  "theme_color": "#2d2d2d",
+  "background_color": "#2d2d2d",
+  "categories": ["hacathon"],
+  "icons": [
+    {
+      "src": "/pwa/homescreen.svg",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pwa/screenshot-1.webp",
+      "type": "image/webp",
+      "sizes": "836x720",
+      "form_factor": "wide",
+      "label": "GitHub repository"
+    },
+    {
+      "src": "/pwa/screenshot-2.webp",
+      "type": "image/webp",
+      "sizes": "836x720",
+      "form_factor": "wide",
+      "label": "Firebase emulators"
+    }
+  ]
+}

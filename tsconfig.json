@@ -35,6 +35,7 @@
     "paths": {
       "fonts/*": ["public/fonts/*"],
       "icons/*": ["public/icons/*"],
+      "pwa/*": ["public/pwa/*"],
       "firebase-cfg/*": ["firebase/*"]
     }
   }
