@@ -31,6 +31,7 @@
     "prettyprint:fix": "prettier --write .",
     "firebase:init": "cd firebase && firebase init",
     "firebase:start:emulators": "cd firebase && firebase emulators:start --import=./seed --export-on-exit",
+    "firebase:deploy": "cd firebase && firebase deploy",
     "firebase:deploy:storage-rules": "cd firebase && firebase deploy --only storage",
     "firebase:deploy:firestore-rules": "cd firebase && firebase deploy --only firestore:rules",
     "firebase:deploy:firesotre-indexes": "cd firebase && firebase deploy --only firestore:indexes",
