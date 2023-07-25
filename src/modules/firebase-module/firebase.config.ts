@@ -11,6 +11,7 @@ export const firebaseApp = initializeApp({
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_ID,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
 });
 export const firebaseAuth = getAuth(firebaseApp);
 export const firestore = getFirestore(firebaseApp);

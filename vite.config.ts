@@ -8,4 +8,7 @@ import { PWA_CONFIG } from './pwa.config';
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   plugins: [react(), viteTsconfigPaths(), VitePWA(PWA_CONFIG)],
+  build: {
+    outDir: './firebase/dist',
+  },
 });
