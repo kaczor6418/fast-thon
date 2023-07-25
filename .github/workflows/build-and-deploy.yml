@@ -1,0 +1,31 @@
+name: Build and deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  lint_and_test:
+    uses: ./.github/lint-and-test.yml
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 💾
+        uses: actions/checkout@v3
+
+      - name: Setup node 🦠
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Generate build 🛠️
+        run: npm run build
+
+      - name: Deploy 🚀
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAST_THON_49C51 }}'
+          channelId: live
+          projectId: fast-thon-49c51
