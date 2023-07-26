@@ -1,2 +1,4 @@
 /node_modules/*
 /dist/*
+/firebase/dist/*
+/firebase/seed/*

@@ -49,7 +49,7 @@ function add_files_to_staged_tree() {
 eslint_autofix_flag=""
 prettier_autofix_flag="--check"
 ends_with_ts_or_tsx=".*\.tsx?$"
-extension_to_fix_by_prettier="\.json$|\.md$"
+extension_to_fix_by_prettier="\.json$|\.md$|\.html$"
 eslint_exit_code=0
 prettier_exit_code=0
 not_staged_ts_tsx_files=$(git diff --diff-filter=b --name-only | grep -E "$ends_with_ts_or_tsx")
