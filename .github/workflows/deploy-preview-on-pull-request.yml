@@ -1,15 +1,12 @@
-name: Build and deploy
-on:
-  push:
-    branches:
-      - master
+name: Deploy to Firebase Hosting
+on: pull_request
 jobs:
   lint_and_test:
     uses: ./.github/workflows/lint-and-test.yml
 
-  build-and-deploy:
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout 💾
         uses: actions/checkout@v3
@@ -26,11 +23,10 @@ jobs:
       - name: Generate build 📦
         run: npm run build
 
-      - name: Deploy 🚀
+      - name: Deploy preview  🛰️
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           entrypoint: ./firebase/
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOKEN }}'
-          channelId: live
           projectId: fast-thon-49c51
