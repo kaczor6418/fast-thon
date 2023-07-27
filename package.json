@@ -36,7 +36,8 @@
     "firebase:deploy:storage-rules": "cd firebase && firebase deploy --only storage",
     "firebase:deploy:firestore-rules": "cd firebase && firebase deploy --only firestore:rules",
     "firebase:deploy:firesotre-indexes": "cd firebase && firebase deploy --only firestore:indexes",
-    "git:stop-tracking-db-seed": "git rm -r --cached firebase/seed/"
+    "git:stop-tracking-db-seed": "git rm -r --cached firebase/seed/",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
