@@ -23,8 +23,5 @@ jobs:
       - name: Install dependencies 🛠️
         run: npm ci
 
-      - name: Start Firebase emulators 🔥
-        run: npm run firebase:start:emulators
-
-      - name: Run integration tests 🧪
-        run: npm run test:integration
+      - name: Run Firebase emulators 🔥 and integration tests 🧪
+        run: npm run firebase:start:emulators \"npm run test --exit\

@@ -48,9 +48,9 @@ function add_files_to_staged_tree() {
 
 eslint_autofix_flag=""
 prettier_autofix_flag="--check"
-ends_with_ts_or_tsx=".*\.tsx?$"
+ends_with_ts_or_tsx=".*\.(jsx?|mjs|mts|tsx?)$"
 firebase_rules=".*\.rules$"
-extension_to_fix_by_prettier="\.json$|\.md$|\.html$"
+extension_to_fix_by_prettier=".*\.(json|md|html)$"
 eslint_exit_code=0
 prettier_exit_code=0
 firebase_exit_code=0
@@ -72,7 +72,7 @@ if [ ${#files_to_add_after_prettyprint} = ${#staged_files_to_prettyprint} ]; the
 fi
 if [[ -n "$staged_ts_tsx_files" ]]; then
   echo "Running ESLint..."
-  ./node_modules/.bin/firebase-tools $staged_ts_tsx_files --cache $eslint_autofix_flag
+  ./node_modules/.bin/eslint $staged_ts_tsx_files --cache $eslint_autofix_flag
   eslint_exit_code=$?
 fi
 if [[ -n "$staged_files_to_prettyprint" ]]; then
