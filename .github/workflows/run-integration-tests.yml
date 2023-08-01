@@ -1,7 +1,7 @@
 name: Run integration tests
 on: workflow_call
 jobs:
-  lint_and_test:
+  run_integration_tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,4 +24,4 @@ jobs:
         run: npm ci
 
       - name: Run integration tests 🧪
-        run: npm run ci:test:integration"
+        run: npm run ci:test:integration
