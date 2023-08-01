@@ -38,7 +38,8 @@
     "firebase:deploy:firesotre-indexes": "cd firebase && firebase deploy --only firestore:indexes",
     "git:stop-tracking-db-seed": "git rm -r --cached firebase/seed/",
     "test:integration": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts",
-    "test:integration:watch": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts --watch"
+    "test:integration:watch": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts --watch",
+    "ci:test:integration": "cd firebase && firebase emulators:exec 'jest /test/integration --testEnvironment=node --coverage=false --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts'"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
