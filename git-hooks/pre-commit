@@ -49,13 +49,16 @@ function add_files_to_staged_tree() {
 eslint_autofix_flag=""
 prettier_autofix_flag="--check"
 ends_with_ts_or_tsx=".*\.tsx?$"
+firebase_rules=".*\.rules$"
 extension_to_fix_by_prettier="\.json$|\.md$|\.html$"
 eslint_exit_code=0
 prettier_exit_code=0
+firebase_exit_code=0
 not_staged_ts_tsx_files=$(git diff --diff-filter=b --name-only | grep -E "$ends_with_ts_or_tsx")
 not_staged_files_to_prettyprint=$(git diff --diff-filter=b --name-only | grep -E "$extension_to_fix_by_prettier")
 staged_ts_tsx_files=$(git diff --cached --diff-filter=d --name-only | grep -E "$ends_with_ts_or_tsx")
 staged_files_to_prettyprint=$(git diff --cached --diff-filter=d --name-only | grep -E "$extension_to_fix_by_prettier")
+staged_firebase_rules=$(git diff --cached --diff-filter=d --name-only | grep -E "$firebase_rules")
 ts_tsx_filter_regex=$(create_pattern "${not_staged_ts_tsx_files[*]}")
 files_to_prettyprint_filter_regex=$(create_pattern "${not_staged_files_to_prettyprint[*]}")
 ts_tsx_files_to_add_after_linting=$(filter_array_with_inverted_regEx "${staged_ts_tsx_files[*]}" "${ts_tsx_filter_regex}")
@@ -69,7 +72,7 @@ if [ ${#files_to_add_after_prettyprint} = ${#staged_files_to_prettyprint} ]; the
 fi
 if [[ -n "$staged_ts_tsx_files" ]]; then
   echo "Running ESLint..."
-  ./node_modules/.bin/eslint $staged_ts_tsx_files --cache $eslint_autofix_flag
+  ./node_modules/.bin/firebase-tools $staged_ts_tsx_files --cache $eslint_autofix_flag
   eslint_exit_code=$?
 fi
 if [[ -n "$staged_files_to_prettyprint" ]]; then
@@ -77,7 +80,12 @@ if [[ -n "$staged_files_to_prettyprint" ]]; then
   ./node_modules/.bin/prettier $prettier_autofix_flag $staged_files_to_prettyprint
   prettier_exit_code=$?
 fi
-if [ $eslint_exit_code = 0 ] && [ $prettier_exit_code = 0 ]; then
+if [[ -n "$staged_firebase_rules" ]]; then
+    echo "Running integration tests..."
+    ./node_modules/.bin/jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts
+    firebase_exit_code=$?
+fi
+if [ $eslint_exit_code = 0 ] && [ $prettier_exit_code = 0 ] && [ $firebase_exit_code = 0 ]; then
   add_files_to_staged_tree "${ts_tsx_files_to_add_after_linting[*]} ${files_to_add_after_prettyprint[*]}"
   echo -e "${GREEN} ✔ Committed successfully *^____^* ${NC}"
   exit 0

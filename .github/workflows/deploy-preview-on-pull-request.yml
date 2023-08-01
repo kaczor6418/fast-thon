@@ -2,7 +2,10 @@ name: Deploy to Firebase Hosting
 on: pull_request
 jobs:
   lint_and_test:
-    uses: ./.github/workflows/lint-and-test.yml
+    uses: ./.github/workflows/run-linters.yml
+
+  integration_tests:
+    uses: ./.github/workflows/run-integration-tests.yml
 
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'

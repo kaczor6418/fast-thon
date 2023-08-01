@@ -4,8 +4,11 @@ on:
     branches:
       - master
 jobs:
-  lint_and_test:
-    uses: ./.github/workflows/lint-and-test.yml
+  code_static_analysis:
+    uses: ./.github/workflows/run-linters.yml
+
+  integration_tests:
+    uses: ./.github/workflows/run-integration-tests.yml
 
   build-and-deploy:
     runs-on: ubuntu-latest

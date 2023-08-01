@@ -1,0 +1,30 @@
+name: Run integration tests
+on: workflow_call
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 💾
+        uses: actions/checkout@v3
+
+      - name: Setup node 🦠
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Setup Java 🍵
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '20'
+
+      - name: Install dependencies 🛠️
+        run: npm ci
+
+      - name: Start Firebase emulators 🔥
+        run: npm run firebase:start:emulators
+
+      - name: Run integration tests 🧪
+        run: npm run test:integration
