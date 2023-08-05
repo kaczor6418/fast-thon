@@ -212,6 +212,6 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   > Remember to run `npm run firebase:start:emulators` before starting integration tests
 - To run integration tests inside CI env
-"test:integration": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts",
-  "test:integration:watch": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts --watch",
-  "ci:test:integration": "cd firebase && firebase emulators:exec 'jest /test/integration --testEnvironment=node --coverage=false --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts'"
+  ```
+  npm run ci:test:integration
+  ```
