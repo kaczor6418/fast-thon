@@ -201,3 +201,17 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   npm run git:stop-tracking-db-seed
   ```
   > This can be usefully if you pushed some changes to db-seed, and you want to keep seed ignored
+- To run integration tests
+  ```
+  npm run test:integration
+  ```
+  > Remember to run `npm run firebase:start:emulators` before starting integration tests
+- To run integration tests and watch for changes
+  ```
+  npm run test:integration:watch
+  ```
+  > Remember to run `npm run firebase:start:emulators` before starting integration tests
+- To run integration tests inside CI env
+"test:integration": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts",
+  "test:integration:watch": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts --watch",
+  "ci:test:integration": "cd firebase && firebase emulators:exec 'jest /test/integration --testEnvironment=node --coverage=false --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts'"
