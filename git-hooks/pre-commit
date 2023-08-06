@@ -1,43 +1,17 @@
 #!/bin/bash
-RED="\033[1;31m"
-GREEN="\033[1;32m"
-NC="\033[0m"
+source ./git-hooks/git-hooks-helpers.sh
+source ./git-hooks/logs-colors.sh
 
-function remove_last_char_if_not_empty() {
-  container=("$@")
-  if [[ -n "$container" ]]; then
-    container=${container::-1}
-  fi
-  echo "$container"
-}
-
-function create_pattern() {
-  files_paths_list=("$@")
-  pattern=""
-  for file_name in $files_paths_list; do
-    pattern="${pattern}${file_name}|"
-  done
-  pattern=$(remove_last_char_if_not_empty "${pattern[*]}")
-  echo "$pattern"
-}
-
-function filter_array_with_inverted_regEx() {
-  files_paths_list=("$@")
-  query=$2
-  container=""
-  if [[ -z "${query}" ]]; then
-    container=$files_paths_list
-  else
-    for value in $files_paths_list; do
-      matched_string=$(echo "$value" | grep -v -E "$query")
-      if [[ -n "$matched_string" ]]; then
-        container="${container}${value} "
-      fi
-    done
-    container=$(remove_last_char_if_not_empty "${container[*]}")
-  fi
-  echo "$container"
-}
+export ESLINT_EXIT_CODE_TMP=$(mktemp)
+echo 0 >"$ESLINT_EXIT_CODE_TMP"
+export ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP=$(mktemp)
+echo "" >"$ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP"
+export PRETTIER_EXIT_CODE_TMP=$(mktemp)
+echo 0 >"$PRETTIER_EXIT_CODE_TMP"
+export PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP=$(mktemp)
+echo "" >"$PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP"
+export FIREBASE_SECURITY_RULES_EXIT_CODE_TMP=$(mktemp)
+echo 0 >"$FIREBASE_SECURITY_RULES_EXIT_CODE_TMP"
 
 function add_files_to_staged_tree() {
   files_paths=("$@")
@@ -46,47 +20,33 @@ function add_files_to_staged_tree() {
   fi
 }
 
-eslint_autofix_flag=""
-prettier_autofix_flag="--check"
-ends_with_ts_or_tsx=".*\.(jsx?|mjs|mts|tsx?)$"
-firebase_rules=".*\.rules$"
-extension_to_fix_by_prettier=".*\.(json|md|html)$"
-eslint_exit_code=0
-prettier_exit_code=0
-firebase_exit_code=0
-not_staged_ts_tsx_files=$(git diff --diff-filter=b --name-only | grep -E "$ends_with_ts_or_tsx")
-not_staged_files_to_prettyprint=$(git diff --diff-filter=b --name-only | grep -E "$extension_to_fix_by_prettier")
-staged_ts_tsx_files=$(git diff --cached --diff-filter=d --name-only | grep -E "$ends_with_ts_or_tsx")
-staged_files_to_prettyprint=$(git diff --cached --diff-filter=d --name-only | grep -E "$extension_to_fix_by_prettier")
-staged_firebase_rules=$(git diff --cached --diff-filter=d --name-only | grep -E "$firebase_rules")
-ts_tsx_filter_regex=$(create_pattern "${not_staged_ts_tsx_files[*]}")
-files_to_prettyprint_filter_regex=$(create_pattern "${not_staged_files_to_prettyprint[*]}")
-ts_tsx_files_to_add_after_linting=$(filter_array_with_inverted_regEx "${staged_ts_tsx_files[*]}" "${ts_tsx_filter_regex}")
-files_to_add_after_prettyprint=$(filter_array_with_inverted_regEx "${staged_files_to_prettyprint[*]}" "${files_to_prettyprint_filter_regex}")
+./git-hooks/run-linters.sh &
+./git-hooks/run-code-formatters.sh &
+./git-hooks/run-firebase-security-rules-tests.sh &
+wait
+IFS= read -r eslint_exit_code <"$ESLINT_EXIT_CODE_TMP"
+IFS= read -r eslint_files_to_add_after_fix <"$ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP"
+IFS= read -r prettier_exit_code <"$PRETTIER_EXIT_CODE_TMP"
+IFS= read -r prettier_files_to_add_after_fix <"$PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP"
+IFS= read -r firebase_exit_code <"$FIREBASE_SECURITY_RULES_EXIT_CODE_TMP"
+if [ $eslint_exit_code = 0 ]; then
+  echo -e "${GREEN} 🌀 ESLint finished SUCCESSFULLY ${NC}"
+else
+  echo -e "${RED} 🌀 ESLint finished UNSUCCESSFULLY ${NC}"
+fi
+if [ $prettier_exit_code = 0 ]; then
+  echo -e "${GREEN} 📝 Prettier finished SUCCESSFULLY ${NC}"
+else
+  echo -e "${RED} 📝 Prettier finished UNSUCCESSFULLY ${NC}"
+fi
+if [ $firebase_exit_code = 0 ]; then
+  echo -e "${GREEN} 🔥 Firebase security rules are VALID ${NC}"
+else
+  echo -e "${RED} 🔥 Firebase security rules are INVALID ${NC}"
+fi
 
-if [ ${#ts_tsx_files_to_add_after_linting} = ${#staged_ts_tsx_files} ]; then
-  eslint_autofix_flag="--fix"
-fi
-if [ ${#files_to_add_after_prettyprint} = ${#staged_files_to_prettyprint} ]; then
-  prettier_autofix_flag="--write"
-fi
-if [[ -n "$staged_ts_tsx_files" ]]; then
-  echo "Running ESLint..."
-  ./node_modules/.bin/eslint $staged_ts_tsx_files --cache $eslint_autofix_flag
-  eslint_exit_code=$?
-fi
-if [[ -n "$staged_files_to_prettyprint" ]]; then
-  echo "Running Prettier..."
-  ./node_modules/.bin/prettier $prettier_autofix_flag $staged_files_to_prettyprint
-  prettier_exit_code=$?
-fi
-if [[ -n "$staged_firebase_rules" ]]; then
-    echo "Running integration tests..."
-    ./node_modules/.bin/jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts
-    firebase_exit_code=$?
-fi
 if [ $eslint_exit_code = 0 ] && [ $prettier_exit_code = 0 ] && [ $firebase_exit_code = 0 ]; then
-  add_files_to_staged_tree "${ts_tsx_files_to_add_after_linting[*]} ${files_to_add_after_prettyprint[*]}"
+  add_files_to_staged_tree "${eslint_files_to_add_after_fix[*]} ${prettier_files_to_add_after_fix[*]}"
   echo -e "${GREEN} ✔ Committed successfully *^____^* ${NC}"
   exit 0
 else
