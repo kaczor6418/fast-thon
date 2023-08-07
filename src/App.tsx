@@ -1,6 +1,7 @@
 import reactLogo from '/icons/react.svg';
 import viteLogo from '/icons/vite.svg';
 import { Button, Grid, Typography, useTheme } from '@mui/material';
+import { Link } from '@tanstack/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CounterWrapper, LogoImg } from './App.styled';
@@ -21,26 +22,18 @@ export function App() {
     >
       <Grid item>
         <div>
-          <a
-            href='https://vitejs.dev'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <Link to='/about-vite'>
             <LogoImg
               src={viteLogo}
               alt='Vite logo'
             />
-          </a>
-          <a
-            href='https://react.dev'
-            target='_blank'
-            rel='noreferrer'
-          >
+          </Link>
+          <Link to='/about-react'>
             <LogoImg
               src={reactLogo}
               alt='React logo'
             />
-          </a>
+          </Link>
         </div>
       </Grid>
       <Grid item>
