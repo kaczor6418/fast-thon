@@ -1,9 +1,10 @@
+import { RouterProvider } from '@tanstack/router';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App';
-import { connectToFirebaseEmulators } from './modules/firebase-module/connectToFirebaseEmulators';
 import { initializeI18n } from './i18n/i18n';
+import { connectToFirebaseEmulators } from './modules/firebase-module/connectToFirebaseEmulators';
 import { CustomThemeProvider } from './mui/CustomThemeProvider';
+import { router } from './router/router';
 
 if (import.meta.env.DEV) {
   connectToFirebaseEmulators();
@@ -14,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Suspense fallback='...is loading'>
       <CustomThemeProvider>
-        <App />
+        <RouterProvider router={router} />
       </CustomThemeProvider>
     </Suspense>
   </React.StrictMode>
