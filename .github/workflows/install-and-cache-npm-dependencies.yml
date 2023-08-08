@@ -16,11 +16,11 @@ jobs:
 
       - name: Cache NPM dependencies 💾
         uses: actions/cache@v3
-        id: cache-primes
+        id: cache-npm-packages
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies 🛠️
-        if: steps.cache-primes.outputs.cache-hit != 'true'
+        if: steps.cache-npm-packages.outputs.cache-hit != 'true'
         run: npm ci
