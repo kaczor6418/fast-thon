@@ -1,0 +1,21 @@
+name: Install dependencies from cache
+on: workflow_call
+jobs:
+  install_dependencies_from_cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🏗️
+        uses: actions/checkout@v3
+
+      - name: Setup node 🦠
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies from cache 💾
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
