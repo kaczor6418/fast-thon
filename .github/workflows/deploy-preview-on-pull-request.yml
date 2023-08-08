@@ -4,12 +4,15 @@ jobs:
   install_and_cache_npm_dependencies:
     uses: ./.github/workflows/install-and-cache-npm-dependencies.yml
 
+  cache_firebase_emulators_policy:
+    uses: ./.github/workflows/setup-firebase-caching-policy.yml
+
   code_static_analysis:
     needs: install_and_cache_npm_dependencies
     uses: ./.github/workflows/run-linters.yml
 
   integration_tests:
-    needs: install_and_cache_npm_dependencies
+    needs: [install_and_cache_npm_dependencies, cache_firebase_emulators_policy]
     uses: ./.github/workflows/run-integration-tests.yml
 
   build_and_preview:
