@@ -23,8 +23,17 @@ jobs:
       - name: Checkout 🏗️
         uses: actions/checkout@v3
 
+      - name: Setup node 🦠
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
       - name: Install dependencies 🛠️
-        uses:  ./.github/workflows/install-dependencies-from-cache.yml
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Generate build 📦
         run: npm run build
