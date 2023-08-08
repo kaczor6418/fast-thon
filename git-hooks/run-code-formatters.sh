@@ -4,7 +4,7 @@ source ./git-hooks/logs-colors.sh
 
 PRETTIER_EXIT_CODE=0
 AUTO_FIX_FLAG="--check"
-EXTENSIONS_TO_CHECK=".*\.(json|md|html)$"
+EXTENSIONS_TO_CHECK=".*\.(json|md|html|yml)$"
 STAGED_FILES=$(git diff --cached --diff-filter=d --name-only | grep -E "$EXTENSIONS_TO_CHECK")
 NOT_STAGED_FILES=$(git diff --diff-filter=b --name-only | grep -E "$EXTENSIONS_TO_CHECK")
 REGEX_FOR_FILES_TO_FIX=$(create_pattern "${NOT_STAGED_FILES[*]}")
