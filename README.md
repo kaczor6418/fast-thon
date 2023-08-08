@@ -33,6 +33,7 @@ features that I will be missing during hackathons.
 - Configured **Firestore**, **Firebase Storage** and **Firebase Authentication** emulators
 - Configured deploy pipeline
 - Configured CI/CD pipeline
+- Configured TanStack Router
 - Full PWA support
 - Theme toggle
 - Configured **_[i18n](https://www.i18next.com/)_**
