@@ -5,23 +5,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 💾
-        uses: actions/checkout@v3
-
-      - name: Setup node 🦠
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          cache: 'npm'
+      - name: Install dependencies 🛠️
+        uses:  ./.github/workflows/install-dependencies-from-cache.yml
 
       - name: Setup Java 🍵
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '20'
-
-      - name: Install dependencies 🛠️
-        run: npm ci
 
       - name: Run integration tests 🧪
         run: npm run ci:test:integration

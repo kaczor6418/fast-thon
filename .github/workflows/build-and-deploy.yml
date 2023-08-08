@@ -4,27 +4,24 @@ on:
     branches:
       - master
 jobs:
+  install_and_cache_npm_dependencies:
+    uses: ./.github/workflows/install-and-cache-npm-dependencies.yml
+
   code_static_analysis:
+    needs: install_and_cache_npm_dependencies
     uses: ./.github/workflows/run-linters.yml
 
   integration_tests:
+    needs: install_and_cache_npm_dependencies
     uses: ./.github/workflows/run-integration-tests.yml
 
   build-and-deploy:
+    needs: install_and_cache_npm_dependencies
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 💾
-        uses: actions/checkout@v3
-
-      - name: Setup node 🦠
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          cache: 'npm'
-
       - name: Install dependencies 🛠️
-        run: npm ci
+        uses:  ./.github/workflows/install-dependencies-from-cache.yml
 
       - name: Generate build 📦
         run: npm run build
