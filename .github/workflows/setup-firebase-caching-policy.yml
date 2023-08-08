@@ -1,0 +1,15 @@
+name: Cache firebase emulators
+on: workflow_call
+jobs:
+  cache_firebase_emulators:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🏗️
+        uses: actions/checkout@v3
+
+      - name: Cache Firebase Emulator Binaries 🔥
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/firebase/emulators
+          key: ${{ runner.os }}-firebase-${{ steps.cache-settings.outputs.firebase-tools }}

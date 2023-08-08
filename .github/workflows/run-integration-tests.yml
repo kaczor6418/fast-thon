@@ -20,11 +20,5 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
-      - name: Cache Firebase Emulator Binaries 🔥
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/firebase/emulators
-          key: ${{ runner.os }}-firebase-${{ steps.cache-settings.outputs.firebase-tools }}
-
       - name: Run integration tests 🧪
         run: npm run ci:test:integration
