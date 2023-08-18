@@ -6,9 +6,10 @@
 4. [Requirements](#requirements)
 5. [Downloading the repository](#downloading-the-repository)
 6. [Using the repository](#using-the-repository)
-   - [Running project](#running-project)
-   - [Documentation](#documentation)
-   - [Scripts](#scripts)
+
+- [Running project](#running-project)
+- [Documentation](#documentation)
+- [Scripts](#scripts)
 
 ## Description
 
@@ -101,6 +102,23 @@ everything correctly open your terminal git-bash and run the following commands:
   ```
 
 ## Using the repository
+
+### Connecting with Firebase project
+
+### Setting-up CI/CD
+
+To make GitHub actions work you need to generate your personal Firebase API token and attach it as a secret inside you
+repository.
+
+**What you need to do:**
+
+1. Open firebase project in the web-browser
+2. Generate API KEY
+3. Open you fork/clone of fast-thon repository
+4. Go to setting
+5. Find secrets
+6. Add need secret (copy content of API Key generated from your FIREBASE project) of name
+   `FIREBASE_SERVICE_ACCOUNT_TOKEN`
 
 ### Running project
 
