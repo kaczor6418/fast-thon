@@ -112,13 +112,24 @@ repository.
 
 **What you need to do:**
 
-1. Open firebase project in the web-browser
-2. Generate API KEY
-3. Open you fork/clone of fast-thon repository
-4. Go to setting
-5. Find secrets
-6. Add need secret (copy content of API Key generated from your FIREBASE project) of name
-   `FIREBASE_SERVICE_ACCOUNT_TOKEN`
+1. Open Firebase [console](https://console.firebase.google.com/) in your web-browser
+2. Navigate to your **_Project setting_** ![image info](./docs/pictures/firebase-project-settings.webp)
+3. Navigate to **_Service accounts_** ![image info](./docs/pictures/firebase-service-accounts.webp)
+4. If you do not have **_Service account_** yet, you should see a button to **_Create service account_**
+5. In Firebase Admin SDK find **_Generate new private key_** button and click it
+   ![image info](./docs/pictures/firebase-generate-key.webp)
+6. Firebase Admin SDK Key should be generated and download to your disk in `.json` format
+7. Now open GitHub with fork/copy of **fast-thon** repository
+8. Open **_Setting_** tab ![image info](./docs/pictures/github-settings.webp)
+9. Find **_Secrets and variables_** section in left navbar and choose **_Actions_**
+   ![image info](./docs/pictures/github-secrets-actions.webp)
+10. Find **_New repository secret_** button and click it ![image info](./docs/pictures/github-create-secreat.webp)
+11. As **_Name_** of your secret put **_`FIREBASE_SERVICE_ACCOUNT_TOKEN`_**
+12. Inside **_Secret_** area put content of Firebase Admin SDK `.json` file you have generated
+13. Click **_Add secret_** button
+14. Now you should be redirected to list of your secrets, and you should see new secret in the list
+    ![image info](./docs/pictures/github-firebase-sdk-secret.webp)
+15. Now GitHub actions should work
 
 ### Running project
 
