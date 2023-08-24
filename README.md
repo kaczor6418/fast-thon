@@ -6,10 +6,11 @@
 4. [Requirements](#requirements)
 5. [Downloading the repository](#downloading-the-repository)
 6. [Using the repository](#using-the-repository)
-
-- [Running project](#running-project)
-- [Documentation](#documentation)
-- [Scripts](#scripts)
+   - [Connecting with Firebase project](#connecting-with-firebase-project)
+   - [Setting-up CI/CD](#setting-up-cicd)
+   - [Running project](#running-project)
+   - [Documentation](#documentation)
+   - [Scripts](#scripts)
 
 ## Description
 
