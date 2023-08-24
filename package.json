@@ -29,7 +29,7 @@
     "lint:watch": "esw . --watch --cache --ext .ts --ext .tsx ",
     "prettyprint": "prettier --check .",
     "prettyprint:fix": "prettier --write .",
-    "firebase:link-app": "swc ./scripts/replace-firebase-project-id.mts -o temp-replace.mjs && node temp-replace.mjs",
+    "firebase:link-app": "swc -C jsc.parser.syntax=typescript ./scripts/replace-firebase-project-id.mts -o temp-replace.mjs && node temp-replace.mjs",
     "firebase:init": "cd firebase && firebase init",
     "firebase:start:emulators": "cd firebase && firebase emulators:start --import=./seed --export-on-exit",
     "firebase:deploy": "cd firebase && firebase deploy",
