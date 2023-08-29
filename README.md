@@ -106,6 +106,18 @@ everything correctly open your terminal git-bash and run the following commands:
 
 ### Connecting with Firebase project
 
+Once you downloaded the repository, you need to set and synchronize your Firebase project name with this repository.
+Otherwise, deploying firestore rules, storage rules, page deployment and CI/CD pipeline can end with errors. You can
+find the project ID in **_Project settings_** tab.
+
+![image info](./docs/pictures/firebase-project-id.webp)
+
+Then you need to run below command with project-id that you have found.
+
+```
+npm run firebase:link-app fast-thon-49c51
+```
+
 ### Setting-up CI/CD
 
 To make GitHub actions work you need to generate your personal Firebase API token and attach it as a secret inside you
@@ -202,6 +214,10 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
 - To start code formatter analysis and fix all auto-fixable errors
   ```
   npm run prettyprint:fix
+  ```
+- To integrate CI/CD pipeline with firebase project
+  ```
+  npm run firebase:link-app [project-name]
   ```
 - To start add your firebase project to this project
   ```
