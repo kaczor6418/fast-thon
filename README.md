@@ -219,9 +219,9 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   npm run firebase:link-app [project-name]
   ```
-- To start add your firebase project to this project
+- To log in to your firebase account
   ```
-  npm run firebase:init
+  npm run firebase:login
   ```
 - To start Authentication, Firestore and Storage emulators
   ```

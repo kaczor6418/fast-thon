@@ -30,7 +30,7 @@
     "prettyprint": "prettier --check .",
     "prettyprint:fix": "prettier --write .",
     "firebase:link-app": "swc -C jsc.parser.syntax=typescript ./scripts/replace-firebase-project-id.mts -o temp-replace.mjs && node temp-replace.mjs",
-    "firebase:init": "cd firebase && firebase init",
+    "firebase:login": "firebase login",
     "firebase:start:emulators": "cd firebase && firebase emulators:start --import=./seed --export-on-exit",
     "firebase:deploy": "cd firebase && firebase deploy",
     "firebase:deploy:hosting": "cd firebase && firebase deploy --only hosting",
