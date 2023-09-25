@@ -153,12 +153,6 @@ dependencies:
 npm i
 ```
 
-Then you should attach your existing Firebase project to this repository:
-
-```
-npm run firebase:init
-```
-
 Then you need to start Firebase emulators first:
 
 ```
