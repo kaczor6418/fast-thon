@@ -1,4 +1,4 @@
-import { BreakpointsOptions } from '@mui/system/createTheme/createBreakpoints';
+import { BreakpointsOptions } from '@mui/material';
 
 export const breakpoints: BreakpointsOptions = {
   values: {

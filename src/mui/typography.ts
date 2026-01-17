@@ -1,9 +1,9 @@
 import JetBrainsMonoWoff2 from '/fonts/JetBrainsMono/JetBrainsMono-Regular.woff2';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { TypographyVariantsOptions } from '@mui/material/styles/createTypography';
 
 const fontName = 'JetBrains Mono';
 
-export const typography: TypographyOptions = {
+export const typography: TypographyVariantsOptions = {
   fontFamily: fontName,
   fontSize: 14,
 };

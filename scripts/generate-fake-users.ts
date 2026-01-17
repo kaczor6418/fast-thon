@@ -24,14 +24,14 @@ export const REGULAR_USER: Pick<UserProfile, 'email' | 'password'> = {
 export async function generateUsersMock(usersCountt: number): Promise<User[]> {
   const pendingUsers: Array<Promise<UserCredential>> = [createUser(VENDOR_USER), createUser(REGULAR_USER)];
   for (let i = 0; i < usersCountt - 2; i++) {
-    pendingUsers.push(createUser({ email: faker.internet.email(), password: faker.internet.password(6) }));
+    pendingUsers.push(createUser({ email: faker.internet.email(), password: faker.internet.password({ length: 6 }) }));
   }
   return (await Promise.all(pendingUsers)).map((userCredential) => userCredential.user);
 }
 
 console.log('DUPA: ', process.argv[2]);
 
-generateUsersMock(usersCount)
+void generateUsersMock(usersCount)
   .then((users) => {
     console.log('USERS CREATED:\n');
     for (const user of users) {

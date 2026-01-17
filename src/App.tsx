@@ -20,7 +20,7 @@ export function App() {
       alignItems='center'
       direction='column'
     >
-      <Grid item>
+      <Grid>
         <div>
           <Link to='/about-vite'>
             <LogoImg
@@ -36,7 +36,7 @@ export function App() {
           </Link>
         </div>
       </Grid>
-      <Grid item>
+      <Grid>
         <Typography
           variant='h1'
           align='center'
@@ -44,7 +44,7 @@ export function App() {
           {t('app.title')}
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid>
         <CounterWrapper>
           <Button
             variant='contained'
@@ -58,7 +58,7 @@ export function App() {
           </p>
         </CounterWrapper>
       </Grid>
-      <Grid item>
+      <Grid>
         <Typography
           sx={{
             color: theme.palette.text.disabled,

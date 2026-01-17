@@ -1,8 +1,8 @@
 import { connectAuthEmulator } from 'firebase/auth';
 import { connectFirestoreEmulator } from 'firebase/firestore';
 import { connectStorageEmulator } from 'firebase/storage';
-import emulatorConfig from 'firebase-cfg/firebase.json';
 import { firestore, firebaseStorage, firebaseAuth } from './firebase.config';
+import emulatorConfig from 'firebase-cfg/firebase.json';
 
 export function connectToFirebaseEmulators(): void {
   connectFirestoreEmulator(firestore, location.hostname, emulatorConfig.emulators.firestore.port);
