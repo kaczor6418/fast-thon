@@ -1,7 +1,7 @@
 import reactLogo from '/icons/react.svg';
 import viteLogo from '/icons/vite.svg';
 import { Button, Grid, Typography, useTheme } from '@mui/material';
-import { Link } from '@tanstack/router';
+import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CounterWrapper, LogoImg } from './App.styled';

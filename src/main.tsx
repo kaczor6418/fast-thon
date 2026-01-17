@@ -1,4 +1,4 @@
-import { RouterProvider } from '@tanstack/router';
+import { RouterProvider } from '@tanstack/react-router';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initializeI18n } from './i18n/i18n';

@@ -41,17 +41,16 @@ features that I will be missing during hackathons.
 - Configured **_[i18n](https://www.i18next.com/)_**
 - Configured **_[MUI](https://mui.com/)_** with prepared files inside **_`./src/mui`_** open for your changes in theme,
   typography...
-- Configured **_[Eslint]()_** and **_[Prettier]()_** with set of rules that you can adjust to your needs
+- Configured **_[Eslint]()_** and **_[Prettier]()_** with a set of rules that you can adjust to your needs
 
 ## Requirements
 
 Before you will use this repository make sure that you have installed:
 
 - **_Git_**
-
-  - If you are a **Windows** or **macOS** user visit this link **[Downloading Git](https://git-scm.com/download/win)**
-    then download appropriate installer and install it.
-  - If you are a **Linux** (Arch-based distribution) user you can paste bellow scrip into your terminal or visit this
+  - If you are a **Windows** or **macOS** user, visit this link **[Downloading Git](https://git-scm.com/download/win)**
+    then download the appropriate installer and install it.
+  - If you are a **Linux** (Arch-based distribution) user, you can paste bellow scrip into your terminal or visit this
     page **[Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)**
 
     ```bash
@@ -59,10 +58,9 @@ Before you will use this repository make sure that you have installed:
     ```
 
 - **_Node.js_** and **_npm_**
-
-  - If you are a **Windows** or **macOS** user visit this link **[Node.js download](https://nodejs.org/en/download/)**
+  - If you are a **Windows** or **macOS** user, visit this link **[Node.js download](https://nodejs.org/en/download/)**
     then download _LTS_ version for Windows and install it.
-  - If you are a **Linux** (Arch-based distribution) user you can paste bellow scrip into your terminal or visit this
+  - If you are a **Linux** (Arch-based distribution) user, you can paste bellow scrip into your terminal or visit this
     page **[Node installation instruction](https://aur.archlinux.org/packages/nvm)** or use
     **[nvm](https://github.com/nvm-sh/nvm#install--update-script)**
 
@@ -73,14 +71,13 @@ Before you will use this repository make sure that you have installed:
     ```
 
 - **_Java 11+_**
-
-  - If you are a **Windows** or **macOS** user visit this link **[OpenJDK Installation ](https://openjdk.org/install/)**
-    and follow instructions.
-  - If you are a **Linux** (Arch-based distribution) user you can follow this instructions
+  - If you are a **Windows** or **macOS** user, visit this link
+    **[OpenJDK Installation ](https://openjdk.org/install/)** and follow instructions.
+  - If you are a **Linux** (Arch-based distribution) user, you can follow these instructions
     **[OpenJDK Installation](https://openjdk.org/install/)** or use this command:
 
     ```bash
-    pacman -S openjdk
+    pacman -S jdk-openjdk
     ```
 
 If you followed every step, you should be ready to start using this repository. To make sure that you have installed
@@ -94,7 +91,7 @@ everything correctly open your terminal git-bash and run the following commands:
 ## Downloading the repository
 
 - Create a fork of this project on your GitHub account
-- Open your terminal / git-bash in location where you want to create a directory which will contain this repository
+- Open your terminal / git-bash in a location where you want to create a directory which will contain this repository
 - Run the following command in your terminal / git-bash
 
   ```bash
@@ -112,7 +109,7 @@ find the project ID in **_Project settings_** tab.
 
 ![image info](./docs/pictures/firebase-project-id.webp)
 
-Then you need to run below command with project-id that you have found.
+Then you need to run the below command with the project-id that you have found.
 
 ```
 npm run firebase:link-app fast-thon-49c51
@@ -140,13 +137,13 @@ repository.
 11. As **_Name_** of your secret put **_`FIREBASE_SERVICE_ACCOUNT_TOKEN`_**
 12. Inside **_Secret_** area put content of Firebase Admin SDK `.json` file you have generated
 13. Click **_Add secret_** button
-14. Now you should be redirected to list of your secrets, and you should see new secret in the list
+14. Now you should be redirected to the list of your secrets, and you should see new secret in the list
     ![image info](./docs/pictures/github-firebase-sdk-secret.webp)
 15. Now GitHub actions should work
 
 ### Running project
 
-To run this project locally make sure you are in root directory of **fast-thon** repository, and you have installed all
+To run this project locally, make sure you are in root directory of **fast-thon** repository, and you have installed all
 dependencies:
 
 ```
@@ -161,7 +158,7 @@ npm run firebase:start:emulators
 
 > Emulator UI should be available under **_[http://127.0.0.1:4000/](http://127.0.0.1:4000/)_**
 
-Then in separated terminal you need run the application:
+Then in a separated terminal you need to run the application:
 
 ```
 npm run start
@@ -171,7 +168,7 @@ npm run start
 
 ### Documentation
 
-To check documentation please visit **_[wiki page](https://github.com/kaczor6418/fast-thon/wiki/fast-thon)_**
+To check documentation, please visit **_[wiki page](https://github.com/kaczor6418/fast-thon/wiki/fast-thon)_**
 
 ### Scripts
 
@@ -179,17 +176,17 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   npm run start
   ```
-- To create production build
+- To create a production build
   ```
   npm run build
   ```
   > If you have errors in the terminal about not enough privileges to create some files/dirs use this command with
-  > `sudo` or add needed privileges to your **_node_modules_**
+  > `sudo` or add the necessary privileges to your **_node_modules_**
 - To start a local web server that serves the built solution
   ```
   npm run preview
   ```
-- To start eslint static code analysis report
+- To start an eslint static code analysis report
   ```
   npm run lint
   ```
@@ -197,11 +194,7 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   npm run lint:fix
   ```
-- To start eslint static doe analysis and fix all auto-fixable errors in watch mode
-  ```
-  npm run lint:watch
-  ```
-- To start code formatter analysis report
+- To start a code formatter analysis report
   ```
   npm run prettyprint
   ```
@@ -209,7 +202,7 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   npm run prettyprint:fix
   ```
-- To integrate CI/CD pipeline with firebase project
+- To integrate a CI/CD pipeline with a firebase project
   ```
   npm run firebase:link-app [project-name]
   ```
@@ -241,7 +234,7 @@ To check documentation please visit **_[wiki page](https://github.com/kaczor6418
   ```
   npm run git:stop-tracking-db-seed
   ```
-  > This can be usefully if you pushed some changes to db-seed, and you want to keep seed ignored
+  > This can be useful if you pushed some changes to db-seed, and you want to keep seed ignored
 - To run integration tests
   ```
   npm run test:integration

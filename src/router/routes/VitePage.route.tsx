@@ -1,4 +1,4 @@
-import { Route } from '@tanstack/router';
+import { Route } from '@tanstack/react-router';
 import { rootRoute } from './Root.route';
 import { VitePage } from '../../pages/vite-page/VitePage';
 

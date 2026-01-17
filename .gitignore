@@ -14,6 +14,7 @@ pids
 # Caches
 buildcache/
 .firebase/
+/firebase/**/firestore_export/**
 .eslintcache
 
 # Editor directories and files

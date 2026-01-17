@@ -1,4 +1,4 @@
-import { Outlet, RootRoute, Route } from '@tanstack/router';
+import { Outlet, RootRoute, Route } from '@tanstack/react-router';
 import React from 'react';
 import { App } from '../../App';
 
@@ -13,7 +13,7 @@ export const indexRoute = new Route({
 });
 
 const TanStackRouterDevtools = React.lazy(() =>
-  import('@tanstack/router-devtools').then((res) => ({
+  import('@tanstack/react-router-devtools').then((res) => ({
     default: res.TanStackRouterDevtools,
   }))
 );

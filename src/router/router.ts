@@ -1,4 +1,4 @@
-import { Router } from '@tanstack/router';
+import { Router } from '@tanstack/react-router';
 import { reactPageRoute } from './routes/ReactPage.route';
 import { indexRoute, rootRoute } from './routes/Root.route';
 import { vitePageRoute } from './routes/VitePage.route';
