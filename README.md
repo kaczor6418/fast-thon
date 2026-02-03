@@ -70,7 +70,7 @@ Before you will use this repository make sure that you have installed:
     nvm use node
     ```
 
-- **_Java 11+_**
+- **_Java 21+_**
   - If you are a **Windows** or **macOS** user, visit this link
     **[OpenJDK Installation ](https://openjdk.org/install/)** and follow instructions.
   - If you are a **Linux** (Arch-based distribution) user, you can follow these instructions
