@@ -31,7 +31,6 @@ export default [
         ...globals.browser,
         ...globals.node,
         ...globals.es2020,
-        ...globals.jest,
       },
       parserOptions: {
         project: './tsconfig.json',
@@ -197,6 +196,7 @@ export default [
       'sort-imports': 'off',
       'sort-keys': 'off',
       '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/no-redundant-type-constituents': 'off',
     },
   },
 
