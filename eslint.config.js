@@ -208,4 +208,10 @@ export default [
       '@typescript-eslint/no-unused-vars': 'off',
     },
   },
+  {
+    files: ['**/test/**/*'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+    },
+  },
 ];

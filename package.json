@@ -24,9 +24,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --cache --ext .ts --ext .tsx",
-    "lint:fix": "eslint . --cache --ext .ts --ext .tsx --fix",
-    "lint:watch": "esw . --watch --cache --ext .ts --ext .tsx ",
+    "lint": "eslint \"**/*.{ts,tsx}\" --cache --cache-strategy content --cache-location .eslintcache",
+    "lint:fix": "eslint \"**/*.{ts,tsx}\" --cache --cache-strategy content --cache-location .eslintcache --fix",
     "prettyprint": "prettier --check .",
     "prettyprint:fix": "prettier --write .",
     "firebase:link-app": "swc -C jsc.parser.syntax=typescript ./scripts/replace-firebase-project-id.mts -o temp-replace.mjs && node temp-replace.mjs",
@@ -38,9 +37,10 @@
     "firebase:deploy:firestore-rules": "cd firebase && firebase deploy --only firestore:rules",
     "firebase:deploy:firesotre-indexes": "cd firebase && firebase deploy --only firestore:indexes",
     "git:stop-tracking-db-seed": "git rm -r --cached firebase/seed/",
-    "test:integration": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts",
-    "test:integration:watch": "jest /test/integration --testEnvironment=node --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts --watch",
-    "ci:test:integration": "cd firebase && firebase emulators:exec 'jest /test/integration --testEnvironment=node --coverage=false --passWithNoTests --setupFilesAfterEnv ./test/integration/integration-setup.ts'"
+    "test": "vitest --config vitest.config.ts",
+    "test:integration": "vitest run --config vitest.config.integration.ts --passWithNoTests",
+    "test:integration:watch": "vitest --config vitest.config.integration.ts --passWithNoTests",
+    "ci:test:integration": "cd firebase && firebase emulators:exec \"vitest run --config ../vitest.config.integration.ts --passWithNoTests\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -81,6 +81,7 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vite-plugin-pwa": "^1.2.0",
-    "vite-tsconfig-paths": "^6.0.4"
+    "vite-tsconfig-paths": "^6.0.4",
+    "vitest": "^4.0.18"
   }
 }
