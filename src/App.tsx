@@ -58,15 +58,17 @@ export function App() {
           </p>
         </CounterWrapper>
       </Grid>
-      <Grid>
-        <Typography
-          sx={{
-            color: theme.palette.text.disabled,
-          }}
-        >
-          Click on the Vite and React logos to learn more
-        </Typography>
-      </Grid>
+      <Link to='/demo'>
+        <Grid>
+          <Typography
+            sx={{
+              color: theme.palette.text.disabled,
+            }}
+          >
+            Demo grocery list
+          </Typography>
+        </Grid>
+      </Link>
     </Grid>
   );
 }
